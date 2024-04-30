@@ -34,3 +34,5 @@ def api():
 def handle_head_request():
     # Handle HEAD request (e.g., return headers without body)
     return '', 200
+
+app.run(host='0.0.0.0', port=10000)
