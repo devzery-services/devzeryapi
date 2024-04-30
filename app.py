@@ -24,8 +24,8 @@ def api():
 
         # Create a response message containing the printed headers and body
         response_message = {
-            "headers": headers_output,
-            "body": body_output
+            "headers": json.loads(headers_output),
+            "body": json.loads(body_output)
         }
 
         return jsonify(response_message)
