@@ -35,4 +35,5 @@ def handle_head_request():
     # Handle HEAD request (e.g., return headers without body)
     return '', 200
 
-app.run(host='0.0.0.0', port=10000)
+if __name__ == '__main__':
+    app.run(host='0.0.0.0', port=10000)
