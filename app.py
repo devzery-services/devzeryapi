@@ -30,3 +30,7 @@ def api():
     except Exception as e:
         return jsonify({"message": f"{e}"}), 400
 
+@app.route('/', methods=['HEAD'])
+def handle_head_request():
+    # Handle HEAD request (e.g., return headers without body)
+    return '', 200
