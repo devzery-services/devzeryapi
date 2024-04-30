@@ -14,21 +14,24 @@ CORS(app)
 @app.route('/api', methods=['POST'])
 def api():
     try:
-    # Log the request headers
+        # Log the request headers
         headers = dict(request.headers)
+        headers_output = json.dumps(headers, indent=4)
 
-        print("######## Headers #########")
-        # logging.info(f"\n######## Headers #########\n {json.dumps(headers, indent=4)} \n\n")
-        print(json.dumps(headers, indent=4))
+        # Log the request body
         data = request.json
-        print("######## Body #########")
-        # logging.info(f"\n######## Body #########\n {json.dumps(data, indent=4)} \n\n")
-        print(json.dumps(data, indent=4))
+        body_output = json.dumps(data, indent=4)
 
-        return jsonify({"message":"success"})
+        # Create a response message containing the printed headers and body
+        response_message = {
+            "headers": headers_output,
+            "body": body_output
+        }
+
+        return jsonify(response_message)
 
     except Exception as e:
-        return jsonify({"message": f"{e}"}), 400
+        return jsonify({"error": str(e)}), 400
 
 @app.route('/', methods=['HEAD'])
 def handle_head_request():
